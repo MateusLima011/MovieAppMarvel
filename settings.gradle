@@ -8,3 +8,5 @@ dependencyResolutionManagement {
 }
 rootProject.name = "MovieAppMarvel"
 include ':app'
+include ':domain'
+include ':data'
