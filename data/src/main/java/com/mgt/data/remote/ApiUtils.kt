@@ -1,4 +1,4 @@
-package com.mgt.data
+package com.mgt.data.remote
 
 import okhttp3.internal.and
 import java.security.MessageDigest

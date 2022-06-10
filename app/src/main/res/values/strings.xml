@@ -9,4 +9,7 @@
     <string name="open">Open</string>
     <string name="close">Close</string>
     <string name="image_comics">image comics</string>
+    <string name="internetError">"Você está sem acesso a internet.\nTente se conectar a outra rede
+        wifi, ou conecte-se pelo dados moveis"</string>
+    <string name="genericError">"Ocorreu um erro no servidor./nTente novamente!!"</string>
 </resources>

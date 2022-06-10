@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph"
-    app:startDestination="@id/comicsFragment">
+    app:startDestination="@id/accountFragment">
 
     <fragment
         android:id="@+id/accountFragment"
         android:name="com.mgt.movieappmarvel.AccountFragment"
         android:label="fragment_account"
         tools:layout="@layout/fragment_account" />
+
     <fragment
         android:id="@+id/comicsFragment"
         android:name="com.mgt.movieappmarvel.comics.ComicsFragment"
         android:label="fragment_comics"
         tools:layout="@layout/fragment_comics" />
+
 </navigation>

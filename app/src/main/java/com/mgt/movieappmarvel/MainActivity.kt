@@ -26,6 +26,7 @@ class MainActivity : AppCompatActivity() {
 
         drawerLayout()
         setupNavController()
+        setupDrawerNavigation()
         setupBottomNavigation()
     }
 
@@ -61,6 +62,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupBottomNavigation() {
         binding.bottomNavigationView.setupWithNavController(navController)
+    }
+
+    private fun setupDrawerNavigation(){
+        binding.navigationViewDrawer.setupWithNavController(navController)
     }
 
 

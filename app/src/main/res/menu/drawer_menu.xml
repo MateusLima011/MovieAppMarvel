@@ -6,12 +6,7 @@
 
     <item
         android:title="@string/comics"
-        android:id="@+id/comics"
-        android:enabled="true"/>
-
-    <item
-        android:title="@string/comics"
-        android:id="@+id/comics2"
+        android:id="@+id/comicsFragment"
         android:enabled="true"/>
 
 </menu>
