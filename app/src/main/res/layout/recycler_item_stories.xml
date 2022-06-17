@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/red">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imageViewStories"
+                android:layout_width="164dp"
+                android:layout_height="172dp"
+                android:scaleType="fitCenter"
+                android:layout_gravity="end"
+                android:layout_marginEnd="8dp"
+                tools:src="@drawable/doctor_strange" />
+
+            <TextView
+                android:id="@+id/title_stories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Doctor Strange"
+                android:textSize="24sp"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"/>
+
+            <TextView
+                android:id="@+id/descriptionStories"
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                tools:text="Nothing can prepare you for the Multiverse.
+                 Experience Marvel Studios' Doctor Strange in the Multiverse of Madness,
+                  only in theatres May 6th."
+                android:layout_marginTop="48dp"
+                android:textSize="16sp"/>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

@@ -2,7 +2,7 @@
 <menu
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:showIn="navigation_view_drawer">
+    tools:ShowIn="navigation_view_drawer">
 
     <item
         android:title="@string/comics"

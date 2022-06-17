@@ -1,4 +1,4 @@
-package com.mgt.domian.model
+package com.mgt.domian.model.comics
 
 import kotlinx.serialization.Serializable
 

@@ -1,6 +1,6 @@
 package com.mgt.data.dto
 
-import com.mgt.domian.model.ComicDataContainer
+import com.mgt.domian.model.comics.ComicDataContainer
 import kotlinx.serialization.Serializable
 
 @Serializable

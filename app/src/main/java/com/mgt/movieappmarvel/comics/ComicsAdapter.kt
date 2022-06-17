@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.mgt.domian.model.Comics
+import com.mgt.domian.model.comics.Comics
 import com.mgt.movieappmarvel.R
 
 class ComicsAdapter(
@@ -39,8 +39,7 @@ class ComicsAdapter(
             Glide
                 .with(itemView.context)
                 .load(comic.thumbnail?.path + "/"
-                        + PORTRAIT_ASPECT_RATIO + ".${comic.thumbnail?.extension}"
-                )
+                        + PORTRAIT_ASPECT_RATIO + ".${comic.thumbnail?.extension}")
                 .into(imageComic)
 
             nameComic.text = comic.title

@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph"
-    app:startDestination="@id/accountFragment">
+    app:startDestination="@id/moviesFragment">
 
     <fragment
         android:id="@+id/accountFragment"
@@ -17,5 +17,14 @@
         android:name="com.mgt.movieappmarvel.comics.ComicsFragment"
         android:label="fragment_comics"
         tools:layout="@layout/fragment_comics" />
+    <fragment
+        android:id="@+id/storiesFragment"
+        android:name="com.mgt.movieappmarvel.stories.StoriesFragment"
+        android:label="StoriesFragment" />
+    <fragment
+        android:id="@+id/moviesFragment"
+        android:name="com.mgt.movieappmarvel.movies.MoviesFragment"
+        android:label="fragment_movies"
+        tools:layout="@layout/fragment_movies" />
 
 </navigation>

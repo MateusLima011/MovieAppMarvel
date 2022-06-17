@@ -1,7 +1,7 @@
 package com.mgt.data.repository
 
 import com.mgt.data.remote.RemoteApiService
-import com.mgt.domian.model.Comics
+import com.mgt.domian.model.comics.Comics
 import com.mgt.domian.repository.ComicsRepository
 
 class ComicsRepositoryImp(private val remoteApiService: RemoteApiService): ComicsRepository {

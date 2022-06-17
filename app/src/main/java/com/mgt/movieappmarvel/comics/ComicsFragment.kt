@@ -29,8 +29,8 @@ class ComicsFragment : Fragment() {
         NetworkStatusChecker(activity?.getSystemService(ConnectivityManager::class.java))
     }
 
-    private var offset: Int = 0
-    private val limit = 20
+    private var offset: Int = 2
+    private val limit = 40
 
     private lateinit var recyclerViewComics: RecyclerView
     private lateinit var comicsAdapter: ComicsAdapter
