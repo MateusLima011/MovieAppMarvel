@@ -9,4 +9,9 @@
         android:id="@+id/comicsFragment"
         android:enabled="true"/>
 
+    <item
+        android:title="Filmes"
+        android:id="@+id/moviesFragment"
+        android:enabled="true"/>
+
 </menu>

@@ -49,4 +49,11 @@ interface RemoteApiService {
         @Query("api_key") apiKey: String,
         @Query("language") language: String,
     ): MovieCreditResponse
+
+    @GET("list/{list_id}")
+    suspend fun getListMovies(
+        @Path("list_id") listId: Int,
+        @Query("api_key") apiKey: String,
+        @Query("language") language: String
+    ): MoviesListPageResult
 }

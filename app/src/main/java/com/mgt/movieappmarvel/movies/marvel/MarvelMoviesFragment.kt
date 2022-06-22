@@ -1,4 +1,4 @@
-package com.mgt.movieappmarvel.movies
+package com.mgt.movieappmarvel.movies.marvel
 
 import android.net.ConnectivityManager
 import android.os.Build
@@ -11,32 +11,34 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.mgt.movieappmarvel.databinding.FragmentMoviesBinding
+import com.mgt.movieappmarvel.databinding.FragmentMarvelMoviesBinding
+import com.mgt.movieappmarvel.movies.MoviesAdapter
 import com.mgt.movieappmarvel.utils.*
 
 @RequiresApi(Build.VERSION_CODES.M)
-class MoviesFragment : Fragment() {
-
-    private var _binding: FragmentMoviesBinding? = null
+class MarvelMoviesFragment : Fragment() {
+    private var _binding: FragmentMarvelMoviesBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: MoviesViewModel by viewModels()
     private var currentPage: Int = 1
+    private var listId: Int = 1
 
     private val networkStatusChecker by lazy {
         NetworkStatusChecker(
             activity?.getSystemService(ConnectivityManager::class.java)
         )
     }
-    private lateinit var recyclerViewMovies: RecyclerView
-    private lateinit var moviesAdapter: MoviesAdapter
+
+    private val viewModel: MarvelViewModel by viewModels()
+    private lateinit var recyclerViewMarvel: RecyclerView
+    private lateinit var marvelAdapter: MarvelAdapter
     private lateinit var layoutManager: LinearLayoutManager
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentMoviesBinding.inflate(inflater, container, false)
+    ): View{
+        _binding = FragmentMarvelMoviesBinding.inflate(inflater,container,false)
         return binding.root
     }
 
@@ -48,23 +50,31 @@ class MoviesFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        recyclerViewMovies = binding.recyclerViewMovies
+        recyclerViewMarvel = binding.recyclerViewMarvel
         layoutManager = LinearLayoutManager(
             context,LinearLayoutManager.VERTICAL, false
         )
-        recyclerViewMovies.layoutManager = layoutManager
+        recyclerViewMarvel.layoutManager = layoutManager
+    }
+
+    private fun setupViews(){
+        binding.refreshMovies.setOnRefreshListener {
+            currentPage = 2
+            viewModel.getListMarvel(currentPage)
+        }
+        viewModel.getListMarvel(currentPage)
     }
 
     private fun observerMoviesList() {
         networkStatusChecker.performIfConnectedToInternet {
-            viewModel.moviesList.observe(viewLifecycleOwner) {
+            viewModel.moviesMarvel.observe(viewLifecycleOwner) {
                 when (it) {
                     is Success -> {
-                        if (currentPage > 1) {
-                            moviesAdapter.updateList(it.data)
+                        if (listId > 1) {
+                            marvelAdapter.updateList(it.data)
                         } else {
-                            moviesAdapter = MoviesAdapter(it.data?.toCollection(arrayListOf()))
-                            recyclerViewMovies.adapter = moviesAdapter
+                            marvelAdapter = MarvelAdapter(it.data?.toCollection(arrayListOf()))
+                            recyclerViewMarvel.adapter = marvelAdapter
                         }
 
                     }
@@ -81,14 +91,5 @@ class MoviesFragment : Fragment() {
                 }
             }
         }
-    }
-
-    private fun setupViews() {
-        binding.refreshMovies.setOnRefreshListener {
-            currentPage = 1
-            moviesAdapter.clearData()
-            viewModel.getPopularMoviesList(currentPage)
-        }
-        viewModel.getPopularMoviesList(currentPage)
     }
 }

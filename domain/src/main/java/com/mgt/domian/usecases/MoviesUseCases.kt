@@ -8,6 +8,7 @@ import com.mgt.domian.repository.MoviesRepository
 
 class MoviesUseCases(private val repository: MoviesRepository) {
     private val language = "pt-BR"
+    private val languageTwo = "en-US"
 
     suspend fun getPopularMoviesList(page: Int): List<Movie>? {
         return repository.getPopularMoviesList(page, language)
@@ -15,6 +16,10 @@ class MoviesUseCases(private val repository: MoviesRepository) {
 
     suspend fun getMovieDescription(movieId: Int): MovieDetails? {
         return repository.getMoviesDescription(movieId, language)
+    }
+
+    suspend fun getListMarvel(listId: Int): List<Movie>? {
+        return repository.getListMovies(listId, languageTwo)
     }
 
     suspend fun getMovieCast(movieId: Int): List<Cast>? {

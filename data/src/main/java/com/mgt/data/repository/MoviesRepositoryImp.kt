@@ -47,4 +47,13 @@ class MoviesRepositoryImp(private val remoteApiService: RemoteApiService) : Movi
             return null
         }
     }
+
+    override suspend fun getListMovies(listId: Int, language: String): List<Movie>?{
+        return try {
+            remoteApiService.getListMovies(listId, apiKey, language).items
+        }catch (e: Exception){
+            Throwable(e)
+            emptyList()
+        }
+    }
 }

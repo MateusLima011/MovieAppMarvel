@@ -1,4 +1,4 @@
-package com.mgt.movieappmarvel.movies
+package com.mgt.movieappmarvel.movies.marvel
 
 import android.view.LayoutInflater
 import android.view.View
@@ -11,43 +11,33 @@ import com.bumptech.glide.Glide
 import com.mgt.domian.model.movies.Movie
 import com.mgt.movieappmarvel.R
 
-class MoviesAdapter(
-    private var moviesList: ArrayList<Movie>? = arrayListOf()
-) : RecyclerView.Adapter<MoviesAdapter.MoviesViewHolder>() {
+class MarvelAdapter(
+    private var marvelList: ArrayList<Movie>? = arrayListOf()
+) : RecyclerView.Adapter<MarvelAdapter.MarvelViewHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): MoviesAdapter.MoviesViewHolder {
+    ): MarvelAdapter.MarvelViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.recycler_item_movies, parent, false)
-        return MoviesViewHolder(view)
+        return MarvelViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: MoviesAdapter.MoviesViewHolder, position: Int) {
-        holder.bind(moviesList?.get(position))
+    override fun onBindViewHolder(holder: MarvelAdapter.MarvelViewHolder, position: Int) {
+        holder.bind(marvelList?.get(position))
     }
 
     fun updateList(data: List<Movie>?){
         data?.let {
-            moviesList?.addAll(it)
+            marvelList?.addAll(it)
             notifyDataSetChanged()
         }
     }
 
-    fun getItemClickId(position: Int): Int{
-        val movie = moviesList?.get(position)
-        return movie?.id ?: 0
-    }
+    override fun getItemCount(): Int = marvelList?.size ?: 0
 
-    fun clearData(){
-        moviesList?.clear()
-        notifyDataSetChanged()
-    }
-
-    override fun getItemCount(): Int = moviesList?.size ?: 0
-
-    inner class MoviesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class MarvelViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val imageViewMoviePoster: ImageView =
             itemView.findViewById(R.id.imageViewMoviePoster)
         private val textViewMovieTitle: TextView = itemView.findViewById(R.id.textViewMovieTitle)
@@ -56,17 +46,17 @@ class MoviesAdapter(
         private val textViewMediaValue: TextView = itemView.findViewById(R.id.textViewMediaValue)
         private val ratingBarPopularity: RatingBar = itemView.findViewById(R.id.ratingBarPopularity)
 
-        fun bind(movie: Movie?) {
-            movie ?: return
-            textViewMovieTitle.text = movie.title
-            textViewOriginTitle.text = movie.original_title
-            textViewVotesValue.text = movie.vote_count.toString()
-            textViewMediaValue.text = movie.vote_average.toString()
-            ratingBarPopularity.rating = (movie.vote_average.div(2)).toFloat()
+        fun bind(marvel: Movie?) {
+            marvel ?: return
+            textViewMovieTitle.text = marvel.title
+
+            textViewVotesValue.text = marvel.vote_count.toString()
+            textViewMediaValue.text = marvel.vote_average.toString()
+            ratingBarPopularity.rating = (marvel.vote_average.div(2)).toFloat()
 
             Glide
                 .with(itemView.context)
-                .load("$URL_MOVIES_IMAGE${movie.poster_path}")
+                .load("$URL_MOVIES_IMAGE${marvel.poster_path}")
                 .into(imageViewMoviePoster)
         }
     }
