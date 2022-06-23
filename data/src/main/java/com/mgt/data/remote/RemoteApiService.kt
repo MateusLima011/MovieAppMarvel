@@ -29,6 +29,15 @@ interface RemoteApiService {
         @Query("hash") hash: String = getHash()
     ): StoriesDataWrapper?
 
+    @GET("/v1/public/series")
+    suspend fun getSeriesList(
+        @Query("limit") limit: Int,
+        @Query("offset") offset: Int,
+        @Query("apikey") apiKey: String,
+        @Query("ts") timeStamp: String = getTimeStamp(),
+        @Query("hash") hash: String = getHash()
+    )
+
     @GET("movie/popular")
     suspend fun getPopularMoviesList(
         @Query("api_key") apiKey: String,
